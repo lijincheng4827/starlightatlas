@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Starlight Atlas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 星空背景 canvas -->
+    <canvas id="starfield-bg"></canvas>
+
+    <div class="app-container">
+
+        <!-- ========= View 0: Login/Register Page ========= -->
+        <section id="auth-view" class="view">
+            <div class="auth-box">
+                <h1 class="title">✨ Starlight Atlas</h1>
+                <div class="auth-tabs">
+                    <button id="login-tab" class="auth-tab active">Login</button>
+                    <button id="register-tab" class="auth-tab">Register</button>
+                </div>
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form">
+                    <input type="text" id="login-username" placeholder="Username" autocomplete="off">
+                    <input type="password" id="login-password" placeholder="Password">
+                    <button id="login-btn" class="auth-submit">Login</button>
+                    <div id="login-message" class="auth-message"></div>
+                </div>
+                <!-- Register Form -->
+                <div id="register-form" class="auth-form hidden">
+                    <input type="text" id="reg-username" placeholder="Username" autocomplete="off">
+                    <input type="password" id="reg-password" placeholder="Password">
+                    <button id="register-btn" class="auth-submit">Register</button>
+                    <div id="reg-message" class="auth-message"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========= View 1: Constellation Selection (Initially Hidden) ========= -->
+        <section id="constellation-selector" class="view" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h1 class="title">📜 Starlight Atlas</h1>
+                <button id="logout-btn" class="back-btn" style="background:none;">🚪 Logout</button>
+            </div>
+            <div class="constellation-grid">
+                <div class="constellation-card" data-constellation="cygnus">
+                    <div class="card-inner">
+                        <h2>Cygnus</h2>
+                        <p>Swan</p>
+                        <small>7 stars · Freedom & Persistence</small>
+                    </div>
+                </div>
+                <div class="constellation-card" data-constellation="cassiopeia">
+                    <div class="card-inner">
+                        <h2>Cassiopeia</h2>
+                        <p>Queen</p>
+                        <small>5 stars · Grace & Perseverance</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========= View 2: Observation Page (Initially Hidden) ========= -->
+        <section id="observation-view" class="view" style="display: none;">
+            <header class="obs-header">
+                <button id="back-to-selector" class="back-btn">← Back to Atlas</button>
+                <h2 id="current-constellation-name">Cygnus</h2>
+            </header>
+
+            <div class="star-chart" id="star-chart"></div>
+
+            <div class="action-bar">
+                <button id="checkin-btn" class="action-btn">✨ Check-in Today</button>
+                <button id="notes-btn" class="action-btn">📝 Notes</button>
+                <button id="share-btn" class="action-btn">📸 Share</button>
+                <button id="certificate-btn" class="action-btn">🏆 Certificate</button>
+            </div>
+
+            <aside id="notes-sidebar" class="notes-sidebar">
+                <div class="sidebar-header">
+                    <h3>Starlight Notes</h3>
+                    <button id="close-sidebar" class="close-btn">✕</button>
+                </div>
+                <div id="star-selector" class="star-selector">
+                    <label>Select Star:</label>
+                    <select id="star-select">
+                        <option value="-1">Constellation Global Note</option>
+                    </select>
+                </div>
+                <textarea id="note-content" placeholder="Write your thoughts here..."></textarea>
+                <button id="save-note" class="save-note-btn">Save Note</button>
+                <div id="notes-history" class="notes-history">
+                    <h4>Notes History</h4>
+                    <div id="history-list" class="history-list"></div>
+                </div>
+            </aside>
+        </section>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
